@@ -1051,5 +1051,5 @@ if st.button("Predict Exam Score"):
 
     st.markdown("---")
     st.caption(
-        "Student Performance Prediction System\n\nBuilt By Farel Yamotaro Hia \n• Streamlit\n• Scikit-Learn\n• Linear Regression"
+        "Student Performance Prediction System\n\nBuilt By Farel Yamotaro Hia PROJECT MACHINE LEARNING GDGoC USU 2026\n• Streamlit\n• Scikit-Learn\n• Linear Regression"
     )
