@@ -1,0 +1,3 @@
+- [ ] Fix `notebooks/project_ml_gdgoc_usu.py` so it no longer contains Colab/Jupyter-only commands and can be parsed by Streamlit.
+- [ ] Ensure the file runs safely as a Streamlit app (renders the main UI or redirects to `app.py`).
+- [ ] Verify no syntax errors (`py_compile`) and confirm Streamlit loads successfully.
