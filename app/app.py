@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import joblib
@@ -37,12 +38,10 @@ st.markdown("""
 
 .hero-card{
 
-    background:
-    linear-gradient(
+    background: linear-gradient(
         135deg,
-        #2563eb 0%,
-        #7c3aed 50%,
-        #9333ea 100%
+        #1e293b,
+        #334155
     );
 
     padding: 3rem;
@@ -52,7 +51,7 @@ st.markdown("""
     text-align: center;
 
     box-shadow:
-    0 20px 50px rgba(99,102,241,0.35);
+    0 15px 35px rgba(15,23,42,0.20);
 
     margin-bottom: 2rem;
 
@@ -63,39 +62,135 @@ st.markdown("""
 
 .hero-card::before{
 
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    width: 300px;
-    height: 300px;
+    width:350px;
+    height:350px;
 
     background:
     radial-gradient(
-        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.08),
         transparent
     );
 
-    top: -150px;
-    right: -100px;
+    top:-180px;
+    right:-120px;
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero-card *{
+    color:#ffffff !important;
 }
 
 .hero-title{
 
-    color: white;
+    color:#ffffff !important;
 
-    font-size: 3rem;
+    font-size:3rem;
 
-    font-weight: 800;
+    font-weight:800;
 
-    margin-bottom: 0.5rem;
+    margin-bottom:0.5rem;
+
+    letter-spacing:-1px;
 }
 
 .hero-subtitle{
 
-    color: rgba(255,255,255,0.9);
+    color:rgba(255,255,255,0.9) !important;
 
-    font-size: 1rem;
+    font-size:1rem;
+}
+
+.hero-stat-title{
+
+    color:rgba(255,255,255,0.75) !important;
+
+    font-size:0.9rem;
+
+    font-weight:500;
+}
+
+.hero-stat-value{
+
+    color:#ffffff !important;
+
+    font-size:1.2rem;
+
+    font-weight:700;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    padding:0.65rem 1rem;
+    border-radius:999px;
+    background:rgba(56,189,248,0.16);
+    color:#bfdbfe;
+    font-weight:700;
+    font-size:0.95rem;
+    margin-top:1rem;
+}
+
+.hero-info-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:1rem;
+    margin-top:1.6rem;
+}
+
+.hero-stat-card{
+    padding:1.2rem 1.3rem;
+    border-radius:22px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(148,163,184,0.18);
+    box-shadow:0 20px 40px rgba(255,255,255,0.05);
+}
+
+.hero-stat-card h3{
+    margin:0;
+    font-size:1.15rem;
+    color:#ffffff;
+    font-weight:800;
+}
+
+.hero-stat-card p{
+    margin:0.55rem 0 0 0;
+    color:rgba(226,232,240,0.82);
+    line-height:1.55;
+}
+
+.hero-graphic{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:1rem;
+    margin-top:1.5rem;
+}
+
+.hero-graphic-card{
+    padding:1rem;
+    border-radius:20px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(148,163,184,0.12);
+    color:#ffffff;
+    min-height:130px;
+}
+
+.hero-graphic-card strong{
+    display:block;
+    font-size:1.2rem;
+    margin-bottom:0.35rem;
+}
+
+.hero-graphic-card span{
+    color:rgba(226,232,240,0.76);
+    font-size:0.9rem;
 }
 
 /* =========================
@@ -104,37 +199,19 @@ st.markdown("""
 
 [data-baseweb="input"]{
 
-    border-radius: 16px !important;
+    border-radius:14px !important;
+
+    border:1px solid rgba(148,163,184,0.2) !important;
 }
 
 .stSelectbox > div > div{
 
-    border-radius: 16px !important;
+    border-radius:14px !important;
 }
 
-/* =========================
-   METRIC CARD
-========================= */
+label{
 
-[data-testid="metric-container"]{
-
-    backdrop-filter: blur(20px);
-
-    border-radius: 20px;
-
-    padding: 1rem;
-
-    border: 1px solid rgba(120,120,120,0.15);
-
-    transition: all 0.3s ease;
-}
-
-[data-testid="metric-container"]:hover{
-
-    transform: translateY(-3px);
-
-    box-shadow:
-    0 12px 25px rgba(0,0,0,0.12);
+    font-weight:600 !important;
 }
 
 /* =========================
@@ -143,39 +220,90 @@ st.markdown("""
 
 .stButton > button{
 
-    width: 100%;
+    width:100%;
 
-    height: 58px;
+    height:58px;
 
-    border: none;
+    border:none;
 
-    border-radius: 18px;
+    border-radius:16px;
 
-    font-size: 18px;
+    font-size:18px;
 
-    font-weight: 700;
+    font-weight:700;
 
-    color: white;
+    color:white;
 
-    background:
-    linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
+    background:linear-gradient(
+        135deg,
+        #334155,
+        #475569
     );
 
-    transition: all 0.3s ease;
+    transition:all .3s ease;
 
     box-shadow:
-    0 10px 25px rgba(99,102,241,0.35);
+    0 10px 20px rgba(51,65,85,0.20);
 }
 
 .stButton > button:hover{
 
-    transform: translateY(-2px);
+    transform:translateY(-2px);
+
+    background:linear-gradient(
+        135deg,
+        #1e293b,
+        #334155
+    );
 
     box-shadow:
-    0 15px 35px rgba(99,102,241,0.45);
+    0 15px 30px rgba(30,41,59,0.25);
+}
+
+/* =========================
+   METRIC CARD
+========================= */
+
+[data-testid="metric-container"]{
+
+    background:rgba(255,255,255,0.65);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:18px;
+
+    padding:1rem;
+
+    border:1px solid rgba(148,163,184,0.15);
+
+    transition:all .3s ease;
+}
+
+[data-testid="metric-container"]:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 10px 25px rgba(15,23,42,0.08);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+[data-testid="stSidebar"]{
+
+    background:
+    linear-gradient(
+        180deg,
+        #0f172a,
+        #1e293b
+    );
+}
+
+[data-testid="stSidebar"] *{
+
+    color:white;
 }
 
 /* =========================
@@ -187,18 +315,18 @@ st.markdown("""
     background:
     linear-gradient(
         135deg,
-        #2563eb,
-        #7c3aed
+        #1e293b,
+        #334155
     );
 
-    padding: 1.5rem;
+    padding:1.5rem;
 
-    border-radius: 20px;
+    border-radius:18px;
 
-    color: white;
+    color:white;
 
     box-shadow:
-    0 10px 25px rgba(99,102,241,0.25);
+    0 10px 25px rgba(15,23,42,0.20);
 }
 
 /* =========================
@@ -207,7 +335,18 @@ st.markdown("""
 
 .streamlit-expanderHeader{
 
-    font-weight: 700;
+    font-weight:700;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+[data-testid="stDataFrame"]{
+
+    border-radius:18px;
+
+    overflow:hidden;
 }
 
 /* =========================
@@ -215,46 +354,213 @@ st.markdown("""
 ========================= */
 
 ::-webkit-scrollbar{
-    width: 10px;
+
+    width:10px;
 }
 
 ::-webkit-scrollbar-thumb{
 
     background:
     linear-gradient(
-        #2563eb,
-        #7c3aed
+        #475569,
+        #64748b
     );
 
-    border-radius: 999px;
+    border-radius:999px;
+}
+
+/* =========================
+   HORIZONTAL LINE
+========================= */
+
+hr{
+
+    border:none;
+
+    height:1px;
+
+    background:rgba(148,163,184,0.2);
+}
+
+.sidebar-header{
+    padding:1rem 1rem 0.75rem 1rem;
+    margin-bottom:1rem;
+    border-radius:20px;
+    background:linear-gradient(180deg, rgba(56,189,248,0.18), rgba(59,130,246,0.08));
+    border:1px solid rgba(255,255,255,0.12);
+}
+
+.sidebar-label{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    padding:0.35rem 0.75rem;
+    border-radius:999px;
+    background:rgba(56,189,248,0.15);
+    color:#bae6fd;
+    font-weight:700;
+    font-size:0.85rem;
+}
+
+.sidebar-title{
+    margin:0;
+    font-size:1.2rem;
+    font-weight:800;
+    color:#ffffff;
+}
+
+.sidebar-subtitle{
+    margin:0.35rem 0 0 0;
+    font-size:0.9rem;
+    color:rgba(226,232,240,0.78);
+}
+
+.sidebar-card-inner{
+    padding:1rem;
+    border-radius:20px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    margin-bottom:1rem;
+}
+
+.sidebar-metric-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:0.8rem;
+}
+
+.sidebar-metric-box{
+    padding:1rem;
+    border-radius:18px;
+    background:rgba(59,130,246,0.14);
+    border:1px solid rgba(96,165,250,0.18);
+}
+
+.sidebar-metric-value{
+    font-size:1.5rem;
+    font-weight:800;
+    color:#ffffff;
+    margin-bottom:0.25rem;
+}
+
+.sidebar-metric-label{
+    font-size:0.85rem;
+    color:rgba(226,232,240,0.75);
+}
+
+.sidebar-section-title{
+    font-size:0.95rem;
+    font-weight:700;
+    color:#e2e8f0;
+    margin-bottom:0.5rem;
+}
+
+.sidebar-small-text{
+    color:rgba(226,232,240,0.72);
+    font-size:0.9rem;
+    line-height:1.5;
+}
+
+.sidebar-footer-text{
+    color:rgba(226,232,240,0.62);
+    font-size:0.8rem;
 }
 
 </style>
 """, unsafe_allow_html=True)
 st.sidebar.markdown("""
-# Analytics Dashboard
-""")
-st.markdown("""
-<div class="hero-card">
-    <h1 class="hero-title">Student Performance Prediction</h1>
-    <p class="hero-subtitle">Predicting exam scores based on academic, social, and demographic factors.</p>
+<div class="sidebar-header">
+    <div>
+        <div class="sidebar-label">Live Analytics</div>
+        <h1 class="sidebar-title">Student Insights</h1>
+        <p class="sidebar-subtitle">Smart predictions • data-driven guidance</p>
+    </div>
+</div>
 
-<h3>Model Overview</h3>
+<div class="sidebar-card-inner">
+    <div class="sidebar-metric-grid">
+        <div class="sidebar-metric-box">
+            <div class="sidebar-metric-value">76.96%</div>
+            <div class="sidebar-metric-label">Model R²</div>
+        </div>
+        <div class="sidebar-metric-box">
+            <div class="sidebar-metric-value">6,607</div>
+            <div class="sidebar-metric-label">Dataset Size</div>
+        </div>
+    </div>
+</div>
 
-<b>Best Model</b><br>
-Linear Regression<br><br>
-
-<b>Accuracy (R²)</b><br>
-76.96%<br><br>
-
-<b>Dataset</b><br>
-6607 Students<br><br>
-
-<b>Features</b><br>
-27 Variables
-
+<div class="sidebar-card-inner">
+    <p class="sidebar-section-title">Model Snapshot</p>
+    <p class="sidebar-small-text">Linear Regression • 27 features • Predict exam performance from academic, social, and demographic data.</p>
 </div>
 """, unsafe_allow_html=True)
+
+# Sidebar - Model Info
+st.sidebar.markdown("---")
+st.sidebar.subheader("Model Information")
+st.sidebar.info("""
+**Algorithm:** Linear Regression
+
+**Features:** 27 Variables
+
+**Target:** Exam Scores
+
+**Training Data:** 6,607 Students
+""")
+
+# Sidebar - Quick Guide
+with st.sidebar.expander("How to Use", expanded=False):
+    st.markdown("""
+1. **Enter Student Name** - Identify the student
+2. **Fill Input Fields** - Provide academic and personal details
+3. **Click Predict** - Generate exam score prediction
+4. **View Results** - See score, grade, and insights
+5. **Download Report** - Save prediction as text file
+    """)
+
+# Sidebar - Input Categories
+with st.sidebar.expander("Input Categories", expanded=False):
+    st.markdown("""
+**Academic Factors:**
+- Hours Studied
+- Attendance
+- Previous Scores
+- Tutoring Sessions
+
+**Health & Lifestyle:**
+- Sleep Hours
+- Physical Activity
+
+**Social & Support:**
+- Motivation Level
+- Parental Involvement
+- Peer Influence
+- Extracurricular Activities
+
+**Socioeconomic:**
+- Family Income
+- Parental Education
+- Access to Resources
+
+**Environmental:**
+- Internet Access
+- Teacher Quality
+- School Type
+- Distance From Home
+    """)
+
+# Sidebar - Tips
+with st.sidebar.expander("Pro Tips", expanded=False):
+    st.markdown("""
+✓ **Accuracy Tip:** Fill all fields accurately for better predictions
+
+✓ **Pattern:** Students with consistent study habits and good attendance typically score higher
+
+✓ **Factors:** Sleep, motivation, and teacher quality significantly impact performance
+
+✓ **History:** Track multiple predictions to see patterns
+    """)
 
 with st.sidebar.expander("About This Model"):
     st.write("""
@@ -269,6 +575,171 @@ Linear Regression
 Performance:
 R² = 0.7696
 """)
+
+# Sidebar - Footer
+st.sidebar.markdown("---")
+st.sidebar.caption("""
+**Student Performance Prediction System**
+
+v1.0 | Built By Farel Yamotaro Hia PROJECT MACHINE LEARNING GDGoC USU 2026
+
+🔧 Technologies: Streamlit • Scikit-Learn
+""")
+
+hero_html = """
+<style>
+.hero-card {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    padding: 2.4rem;
+    border-radius: 28px;
+    color: #ffffff;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.3);
+    font-family: Inter, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+.hero-title {
+    margin: 0;
+    font-size: 2.45rem;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+.hero-subtitle {
+    margin: 0.75rem 0 1.25rem 0;
+    color: rgba(226, 232, 240, 0.9);
+    font-size: 1rem;
+    max-width: 740px;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.16);
+    color: #bfdbfe;
+    font-weight: 700;
+    font-size: 0.96rem;
+    margin-bottom: 1.6rem;
+}
+.hero-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.hero-stat-card {
+    padding: 1.2rem 1.3rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05);
+}
+.hero-stat-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #ffffff;
+    font-weight: 800;
+}
+.hero-stat-card p {
+    margin: 0.55rem 0 0;
+    color: rgba(226, 232, 240, 0.82);
+    line-height: 1.6;
+}
+.hero-graphic {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+.hero-graphic-card {
+    padding: 1rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    color: #ffffff;
+    min-height: 130px;
+}
+.hero-graphic-card strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+.hero-graphic-card span {
+    color: rgba(226, 232, 240, 0.76);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+@media (max-width: 1024px) {
+    .hero-info-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-graphic {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 720px) {
+    .hero-card {
+        padding: 1.4rem;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        max-width: 100%;
+    }
+    .hero-badge {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.9rem;
+        margin-bottom: 1rem;
+    }
+    .hero-graphic {
+        grid-template-columns: 1fr;
+    }
+}
+body { margin: 0; }
+</style>
+<div class="hero-card">
+    <h1 class="hero-title">Student Performance Prediction</h1>
+    <p class="hero-subtitle">Predicting exam scores based on academic, social, and demographic factors.</p>
+    <div class="hero-badge">📈 Data-driven learning insights</div>
+
+    <div class="hero-info-grid">
+        <div class="hero-stat-card">
+            <h3>76.96% Predictive Accuracy</h3>
+            <p>Linear Regression was trained on 6,607 students for reliable score estimates.</p>
+        </div>
+        <div class="hero-stat-card">
+            <h3>27 Insightful Inputs</h3>
+            <p>Mix of academic, social, and lifestyle features to capture real student performance.</p>
+        </div>
+    </div>
+
+    <div class="hero-graphic">
+        <div class="hero-graphic-card">
+            <strong>Study Focus</strong>
+            <span>Visualizes the student’s preparation and support factors.</span>
+        </div>
+        <div class="hero-graphic-card">
+            <strong>Performance Boost</strong>
+            <span>Shows how attendance, motivation, and resources impact scores.</span>
+        </div>
+        <div class="hero-graphic-card">
+            <strong>Smart Report</strong>
+            <span>Generates a polished result with recommendation and downloadable report.</span>
+        </div>
+    </div>
+</div>
+"""
+
+components.html(hero_html, height=700, scrolling=True)
+
+st.markdown("---")
+
+# Student Name Input
+student_name = st.text_input("Student Name", placeholder="Enter student name")
 
 st.markdown("---")
 
@@ -468,7 +939,7 @@ if st.button("Predict Exam Score"):
     if "history" not in st.session_state:
         st.session_state.history = []
     entry_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    st.session_state.history.append({"time": entry_time, "score": f"{score:.2f}", "grade": grade})
+    st.session_state.history.append({"name": student_name if student_name else "N/A", "time": entry_time, "score": f"{score:.2f}", "grade": grade})
     st.session_state.history = st.session_state.history[-5:]
 
     # Layout and display
@@ -483,6 +954,7 @@ if st.button("Predict Exam Score"):
                         color: white;
                         box-shadow: 0px 14px 35px rgba(15, 23, 42, 0.35);'>
                 <h2 style='margin: 0 0 0.5rem 0;'>Predicted Exam Score</h2>
+                <p style='font-size: 1rem; margin: 0 0 1rem 0; opacity: 0.9;'><strong>Student:</strong> {student_name if student_name else "N/A"}</p>
                 <p style='font-size: 3rem; margin: 0; font-weight: 800;'>{score:.2f}</p>
                 <p style='margin: 0.75rem 0 0 0; font-size: 1.2rem;'>Grade: <strong>{grade}</strong></p>
             </div>
@@ -519,6 +991,7 @@ if st.button("Predict Exam Score"):
 
     # Download report
     report = (
+        f"Student Name: {student_name if student_name else 'N/A'}\n"
         f"Predicted Score: {score:.2f}\n"
         f"Grade: {grade}\n"
         f"Time: {entry_time}\n"
@@ -578,5 +1051,5 @@ if st.button("Predict Exam Score"):
 
     st.markdown("---")
     st.caption(
-        "Student Performance Prediction System\n\nBuilt By Farel Yamotaro Hia\n• Streamlit\n• Scikit-Learn\n• Linear Regression"
+        "Student Performance Prediction System\n\nBuilt By Farel Yamotaro Hia \n• Streamlit\n• Scikit-Learn\n• Linear Regression"
     )
