@@ -10,9 +10,23 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 MODEL_DIR = BASE_DIR / "data"
 
-# Load model dan scaler
-model = joblib.load(MODEL_DIR / "linear_regression.pkl")
-scaler = joblib.load(MODEL_DIR / "scaler.pkl")
+# Load model dan scaler (robust for deployment)
+linear_path = MODEL_DIR / "linear_regression.pkl"
+scaler_path = MODEL_DIR / "scaler.pkl"
+
+if not linear_path.exists() or not scaler_path.exists():
+    st.error(
+        "Model artifacts are missing.\n"
+        f"Expected: {linear_path}\n"
+        f"Expected: {scaler_path}"
+    )
+    st.info(f"Computed BASE_DIR: {BASE_DIR}")
+    st.info(f"Computed MODEL_DIR: {MODEL_DIR}")
+    st.stop()
+
+model = joblib.load(linear_path)
+scaler = joblib.load(scaler_path)
+
 
 st.set_page_config(
     page_title="Student Performance Prediction",
