@@ -1,29 +1,24 @@
-# NOTE:
-# This file originally contained a Google Colab export of the training notebook.
-# Streamlit cannot execute notebook-only commands like:
-#   - `pip install ...`
-#   - `!unzip ...` / `!ls -R`
-#   - `from google.colab import files`
-#
-# For deployment, the actual Streamlit UI lives in `app.py`.
-# This stub keeps the file importable so Streamlit (or any runner that points
-# to this path) won’t fail with SyntaxError.
+"""Streamlit entrypoint.
 
-import streamlit as st
+Deployment log sebelumnya menjalankan file ini sebagai *main module*.
+Agar tidak terjadi redirect loop/slow loading, file ini langsung
+menjalankan UI dari `app.py`.
 
-st.set_page_config(page_title="Student Performance Prediction", page_icon="📚", layout="wide")
+Catatan: kita tidak meng-copy UI; cukup import dan eksekusi.
+"""
 
-st.warning(
-    "This deployment uses `app.py` as the Streamlit entry point. "
-    "Redirecting…"
-)
+import importlib.util
+from pathlib import Path
 
-# Try to embed/redirect by linking to the correct app URL.
-# (In most Streamlit hosting setups, the entry script is `app.py` already.)
-try:
-    st.page_link("../app.py", label="Open app.py", icon="📚")
-except Exception:
-    pass
+# Cari app.py di project root (satu level di atas folder notebooks)
+ROOT_DIR = Path(__file__).resolve().parent.parent
+APP_PY = ROOT_DIR / "app.py"
 
-st.stop()
+spec = importlib.util.spec_from_file_location("student_performance_app", APP_PY)
+if spec is None or spec.loader is None:
+    raise RuntimeError(f"Cannot load app.py at: {APP_PY}")
+
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+
 
